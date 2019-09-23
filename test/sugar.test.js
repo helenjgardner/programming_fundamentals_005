@@ -51,10 +51,28 @@ describe("Object.min", () => {
         d: 9
       })
     ).toBe(9);
+    //additional test added to incorporate negative numbers
+    expect(
+      Object.min({
+        a: 1,
+        b: 0,
+        c: -1,
+        d: 0
+      })
+    ).toBe(-1);
+
+    expect(
+      Object.min({
+        a: -1,
+        b: 0,
+        c: -101,
+        d: -10
+      })
+    ).toBe(-101);
   });
 });
 
-describe("Object.max", () => {
+describe.only("Object.max", () => {
   test("returns the largest number of all values in an object", () => {
     expect(
       Object.max({
