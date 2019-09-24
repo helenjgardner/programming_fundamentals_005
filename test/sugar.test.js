@@ -91,6 +91,13 @@ describe.only("Object.max", () => {
         d: 9
       })
     ).toBe(434);
+    // come back to this
+    // expect(
+    //   Object.max({
+    //     a: 434,
+    //     b: 'string'
+    //   })
+    // ).toEqual([434,'string']);
   });
 });
 
