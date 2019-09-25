@@ -72,7 +72,7 @@ describe("Object.min", () => {
   });
 });
 
-describe.only("Object.max", () => {
+describe("Object.max", () => {
   test("returns the largest number of all values in an object", () => {
     expect(
       Object.max({
@@ -91,13 +91,14 @@ describe.only("Object.max", () => {
         d: 9
       })
     ).toBe(434);
-    // come back to this
-    // expect(
-    //   Object.max({
-    //     a: 434,
-    //     b: 'string'
-    //   })
-    // ).toEqual([434,'string']);
+
+    // added new test 24/9/19  return null if there is a non number value
+    expect(
+      Object.max({
+        a: 434,
+        b: 'string'
+      })
+    ).toEqual(null);
   });
 });
 
@@ -331,6 +332,42 @@ describe("Object.find", () => {
 
     expect(result).toBe(null);
   });
+
+  //  new test added 24/9/19
+  test("returns second value if more than one value matches function", () => {
+    function matcherFunc(val) {
+      return val > 99;
+    }
+
+    const obj = {
+      a: 1,
+      b: 220,
+      c: 4,
+      d: 120
+    };
+
+    const result = Object.find(obj, matcherFunc);
+
+    expect(result).toBe(120);
+  });
+
+  //  new test added 24/9/19
+  test("returns the found value if a different function is passed", () => {
+    function matcherFunc(val) {
+      return val < 99;
+    }
+
+    const obj = {
+      a: 1,
+      b: 220,
+      c: 100,
+      d: 120
+    };
+
+    const result = Object.find(obj, matcherFunc);
+
+    expect(result).toBe(1);
+  });
 });
 
 describe("Object.every", () => {
@@ -366,6 +403,42 @@ describe("Object.every", () => {
     const result = Object.every(obj, matcherFunc);
 
     expect(result).toBe(false);
+  });
+
+  //  new test added 24/9/19
+  test("returns false when using new function and not all values match", () => {
+    function matcherFunc(val) {
+      return val < 99;
+    }
+
+    const obj = {
+      a: 1,
+      b: 220,
+      c: 100,
+      d: 120
+    };
+
+    const result = Object.every(obj, matcherFunc);
+
+    expect(result).toBe(false);
+  });
+
+  //  new test added 24/9/19
+  test("returns true when using new function and all values match", () => {
+    function matcherFunc(val) {
+      return val < 99;
+    }
+
+    const obj = {
+      a: 1,
+      b: 2,
+      c: 1,
+      d: 1
+    };
+
+    const result = Object.every(obj, matcherFunc);
+
+    expect(result).toBe(true);
   });
 });
 
