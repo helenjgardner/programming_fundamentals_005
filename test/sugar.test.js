@@ -477,3 +477,33 @@ describe("Object.some", () => {
     expect(result).toBe(false);
   });
 });
+
+describe("Object.remove", () => {
+  test("returns complete object if none values pass the condition", () => {
+    function removeFunc(val) {
+      return val > 10;
+    }
+    const obj = {
+      first: 10,
+      second: 9,
+      third: 0
+    };
+    const myResult = Object.remove(obj, removeFunc);
+    expect(myResult).toEqual(obj);
+  });
+  test("returns filtered object if some values pass the condition", () => {
+    function removeFunc(val) {
+      return val > 10;
+    }
+    const obj = {
+      first: 10,
+      second:11,
+      third: 12
+    };
+    const expected = {
+      first: 10
+    };
+    const myResult = Object.remove(obj, removeFunc);
+    expect(myResult).toEqual(expected);
+  });
+});
