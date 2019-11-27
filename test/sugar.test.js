@@ -499,7 +499,7 @@ describe("Object.remove", () => {
     }
     const obj = {
       first: 10,
-      second:11,
+      second: 11,
       third: 12
     };
     const expected = {
@@ -508,38 +508,38 @@ describe("Object.remove", () => {
     const myResult = Object.remove(obj, removeFunc);
     expect(myResult).toEqual(expected);
   });
-  test("returns empty object if all values pass condition", () =>{
-    function removeFunc(val){
+  test("returns empty object if all values pass condition", () => {
+    function removeFunc(val) {
       return val < 2;
     }
     const obj = {
       first: 1,
-      second:1,
+      second: 1,
       third: 0
     };
     const expected = {};
-    const result=Object.remove(obj,removeFunc);
+    const result = Object.remove(obj, removeFunc);
     expect(result).toEqual(expected);
   })
 });
 
-describe("Object.forEach", () =>{
-   test("returns object with function applied numeric", () =>{
-     function triple(val){
-        return val*3;
-     }
-     const myObj={stock: 10, warehouses: 2, lorries: 200};
-     const expObj={stock: 30, warehouses: 6, lorries: 600};
-     const myResult=Object.forEach(myObj,triple);
-     expect(myResult).toEqual(expObj);
-   });
-   test("returns object with function applied string", () =>{
-    function firstInitial(val){
-       return val.slice(0,1);
+describe("Object.forEach", () => {
+  test("returns object with function applied numeric", () => {
+    function triple(val) {
+      return val * 3;
     }
-    const myObj={firstName: "Helen", middleName: "Jane", surname: "Gardner"};
-    const expObj={firstName: "H", middleName: "J", surname: "G"};
-    const myResult=Object.forEach(myObj,firstInitial);
+    const myObj = { stock: 10, warehouses: 2, lorries: 200 };
+    const expObj = { stock: 30, warehouses: 6, lorries: 600 };
+    const myResult = Object.forEach(myObj, triple);
+    expect(myResult).toEqual(expObj);
+  });
+  test("returns object with function applied string", () => {
+    function firstInitial(val) {
+      return val.slice(0, 1);
+    }
+    const myObj = { firstName: "Helen", middleName: "Jane", surname: "Gardner" };
+    const expObj = { firstName: "H", middleName: "J", surname: "G" };
+    const myResult = Object.forEach(myObj, firstInitial);
     expect(myResult).toEqual(expObj);
   });
 });
