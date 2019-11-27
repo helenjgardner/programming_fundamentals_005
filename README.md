@@ -34,5 +34,5 @@ This project implements the following methods:
 - [`Object.find`](https://sugarjs.com/docs/#/Object/find)
 - [`Object.every`](https://sugarjs.com/docs/#/Object/every)
 - [`Object.some`](https://sugarjs.com/docs/#/Object/some)
-- [`Object.remove`] (http://sugarjs.com/docs/#/Object/remove)
-- [`Object.forEach`] (http://sugarjs.com/docs/#/Object/forEach)
+- [`Object.remove`](http://sugarjs.com/docs/#/Object/remove)
+- [`Object.forEach`](http://sugarjs.com/docs/#/Object/forEach)
